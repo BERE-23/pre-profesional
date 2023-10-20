@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Informes y Estadísticas</title>
+    <style>
+        /* Estilos CSS para la tabla y el diseño de la página */
+        /* Puedes personalizar estos estilos según tus preferencias */
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Informes y Estadísticas</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Estudiante</th>
+                    <th>Calificación</th>
+                    <th>Comentarios</th>
+                </tr>
+            </thead>
+            <tbody id="table-body">
+                <!-- Aquí se generarán las filas con los datos de los estudiantes -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Datos de ejemplo (puedes reemplazar esto con tus propios datos):
+        var estudiantes = [
+            { nombre: "Estudiante 1", calificacion: 4.5, comentarios: "Buen desempeño, se destaca en trabajo en equipo." },
+            { nombre: "Estudiante 2", calificacion: 3.8, comentarios: "Necesita mejorar en la comunicación escrita." },
+            { nombre: "Estudiante 3", calificacion: 4.2, comentarios: "Excelente iniciativa y habilidades técnicas." }
+        ];
+
+        var tableBody = document.getElementById("table-body");
+
+        estudiantes.forEach(function(estudiante) {
+            var row = document.createElement("tr");
+            var nombreCell = document.createElement("td");
+            nombreCell.textContent = estudiante.nombre;
+            var calificacionCell = document.createElement("td");
+            calificacionCell.textContent = estudiante.calificacion;
+            var comentariosCell = document.createElement("td");
+            comentariosCell.textContent = estudiante.comentarios;
+
+            row.appendChild(nombreCell);
+            row.appendChild(calificacionCell);
+            row.appendChild(comentariosCell);
+
+            tableBody.appendChild(row);
+        });
+    </script>
+</body>
+</html>

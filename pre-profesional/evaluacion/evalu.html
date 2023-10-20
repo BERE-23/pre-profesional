@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Evaluación y Retroalimentación</title>
+    <style>
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        input[type="radio"] {
+            display: none;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .rating {
+            float: left;
+        }
+
+        .rating:not(:checked) > input {
+            position: absolute;
+            top: -9999px;
+        }
+
+        .rating:not(:checked) > label {
+            float: right;
+            width: 30px;
+            height: 30px;
+            padding: 0;
+            font-size: 30px;
+            line-height: 30px;
+            text-align: center;
+            color: lightgray;
+            cursor: pointer;
+        }
+
+        .rating:not(:checked) > label:before {
+            content: '★';
+        }
+
+        .rating > input:checked ~ label {
+            color: gold;
+        }
+
+        .rating:not(:checked) > label:hover,
+        .rating:not(:checked) > label:hover ~ label {
+            color: gold;
+        }
+
+        .rating > input:checked + label:hover,
+        .rating > input:checked + label:hover ~ label,
+        .rating > input:checked ~ label:hover,
+        .rating > input:checked ~ label:hover ~ label,
+        .rating > label:hover ~ input:checked ~ label {
+            color: gold;
+        }
+
+        .feedback {
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Evaluación y Retroalimentación</h2>
+
+        <label for="nombre">Nombre del estudiante:</label>
+        <input type="text" id="nombre" placeholder="Ingrese el nombre del estudiante">
+
+        <label for="evaluacion">Evaluación:</label>
+        <div class="rating">
+            <input type="radio" id="estrella5" name="rating" value="5">
+            <label for="estrella5"></label>
+            <input type="radio" id="estrella4" name="rating" value="4">
+            <label for="estrella4"></label>
+            <input type="radio" id="estrella3" name="rating" value="3">
+            <label for="estrella3"></label>
+            <input type="radio" id="estrella2" name="rating" value="2">
+            <label for="estrella2"></label>
+            <input type="radio" id="estrella1" name="rating" value="1">
+            <label for="estrella1"></label>
+        </div>
+
+        <label for="comentarios">Comentarios:</label>
+        <textarea id="comentarios" placeholder="Ingrese sus comentarios"></textarea>
+
+        <button onclick="enviarFeedback()">Enviar Feedback</button>
+    </div>
+
+    <script>
+        function enviarFeedback() {
+            var nombre = document.getElementById("nombre").value;
+            var evaluacion = document.querySelector('input[name="rating"]:checked').value;
+            var comentarios = document.getElementById("comentarios").value;
+
+            // Lógica para enviar el feedback (puedes implementar tu propia lógica aquí)
+
+            // Muestra una alerta con los datos del feedback
+            alert("Feedback enviado:\n\nEstudiante: " + nombre + "\nEvaluación: " + evaluacion + " estrella(s)\nComentarios: " + comentarios);
+
+            // Restablece los campos del formulario
+            document.getElementById("nombre").value = "";
+            document.querySelector('input[name="rating"]:checked').checked = false;
+            document.getElementById("comentarios").value = "";
+        }
+    </script>
+</body>
+</html>

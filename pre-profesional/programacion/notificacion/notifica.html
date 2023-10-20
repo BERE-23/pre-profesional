@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Comunicación y Notificaciones</title>
+    <style>
+        /* Estilos CSS para la interfaz de usuario */
+        /* Puedes personalizar estos estilos según tus preferencias */
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .message-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .message-item {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .message-item .sender {
+            font-weight: bold;
+        }
+
+        .notification {
+            background-color: #f2f2f2;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+<div class="form-cover"></div>
+
+<form>
+    <label for="role">Rol:</label>
+    <select id="role" name="role">
+        <option value="student">Estudiante</option>
+        <option value="academic_tutor">Tutor Académico</option>
+        <option value="supervisor">Supervisor</option>
+    </select>
+
+    <label for="name">Nombre:</label>
+    <input type="text" id="name" name="name" required>
+
+<h3>Enviar Mensaje</h3>
+<form id="message-form">
+    <label for="sender">Remitente: </label>
+    <input type="text" id="sender" required><br><br>
+
+    <label for="message">Mensaje: </label><br>
+    <textarea id="message" rows="4" cols="50" required></textarea><br><br>
+
+    <label for="recipient">Destinatario: </label>
+    <select id="recipient">
+        <option value="tutors">Tutores</option>
+        <option value="students">Estudiantes</option>
+        <option value="supervisors">Supervisores</option>
+    </select><br><br>
+
+    <button type="submit">Enviar</button>
+    <script>
+    // Función para mostrar un mensaje en la lista correspondiente
+    function showMessage(type, title, message) {
+        var messageList = document.getElementById(type + "-message-list");
+
+        var listItem = document.createElement("li");
+        listItem.classList.add("message-item");
+
+        var titleElement = document.createElement("div");
+        titleElement.classList.add("title");
+        titleElement.textContent = title;
+        listItem.appendChild(titleElement);
+
+        var messageElement = document.createElement("div");
+        messageElement.textContent = message;
+        listItem.appendChild(messageElement);
+
+        messageList.appendChild(listItem);
+    }
+
+    // EventListener para recibir notificaciones en tiempo real utilizando SSE
+    var eventSource = new EventSource("/notificaciones");
+
+    eventSource.addEventListener("message", function(event) {
+        var data = JSON.parse(event.data);
+        var recipient = data.recipient;
+
+        if (recipient === "tutors") {
+            showMessage("tutors", data.title, data.message);
+        } else if (recipient === "students") {
+            showMessage("students", data.title, data.message);
+        } else if (recipient === "supervisors") {
+            showMessage("supervisors", data.title, data.message);
+        }
+    });
+
+    // EventListener para enviar mensajes
+    var messageForm = document.getElementById("message-form");
+
+    messageForm.addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        var sender = document.getElementById("sender").value;
+        var message = document.getElementById("message").value;
+        var recipient = document.getElementById("recipient").value;
+
+        // Aquí puedes agregar la lógica para enviar el mensaje al servidor
+
+        // Limpiar los campos del formulario después de enviar el mensaje
+        document.getElementById("sender").value = "";
+        document.getElementById("message").value = "";
+        window.location.href = "pre-profesional/menu.html";
+    });
+</script>
+</head>
+</html>

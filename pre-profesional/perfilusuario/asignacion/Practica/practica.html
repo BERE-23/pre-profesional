@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Búsqueda de Oportunidades de Prácticas</title>
+	<style type="text/css">
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+		}
+
+		.container {
+			max-width: 800px;
+			margin: 0 auto;
+			padding: 20px;
+		}
+
+		.form-header {
+			text-align: center;
+			margin-bottom: 20px;
+		}
+
+		.form-header h1 {
+			margin-top: 0;
+		}
+
+		form {
+			max-width: 500px;
+			margin: 0 auto;
+			background-color: #f5f5f5;
+			padding: 20px;
+			border-radius: 5px;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		}
+
+		label,
+		input,
+		select,
+		textarea {
+			display: block;
+			margin-bottom: 10px;
+		}
+
+		button {
+			margin-top: 10px;
+			padding: 10px 20px;
+			background-color: #4caf50;
+			color: #fff;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+		}
+
+		button:hover {
+			background-color: #45a049;
+		}
+
+		.opportunities-table {
+			width: 100%;
+			border-collapse: collapse;
+			margin-top: 20px;
+		}
+
+		.opportunities-table th,
+		.opportunities-table td {
+			padding: 8px;
+			border-bottom: 1px solid #ddd;
+		}
+
+		.opportunities-table th {
+			background-color: #f2f2f2;
+			text-align: left;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="form-header">
+			<h1>Búsqueda de Oportunidades de Prácticas</h1>
+		</div>
+
+		<form id="searchForm">
+			<label for="areaEstudio">Área de Estudio:</label>
+			<input type="text" id="areaEstudio" name="areaEstudio" required>
+
+			<label for="especializacion">Especialización:</label>
+			<input type="text" id="especializacion" name="especializacion" required>
+
+			<button type="submit">Buscar Oportunidades</button>
+		</form>
+
+		<h2>Resultados de la Búsqueda</h2>
+
+		<table class="opportunities-table">
+			<thead>
+				<tr>
+					<th>Empresa</th>
+					<th>Área de Estudio</th>
+					<th>Requisitos</th>
+				</tr>
+			</thead>
+			<tbody id="opportunitiesTableBody">
+				<tr>
+					<th>Tia</th>
+					<th>Progamador</th>
+					<th>Saber programar</th>
+				</tr>
+				<tr>
+					<th>Tia</th>
+					<th>Mantenimiento</th>
+					<th>Saber dar un buen mantenimiento</th>
+				</tr>
+				<tr>
+					<th>Tia</th>
+					<th>Ingeniero en Software</th>
+					<th>Saber crear software</th>
+				</tr>
+				<tr>
+					<th>Municipio de Manta</th>
+					<th>Progamador</th>
+					<th>Saber programar</th>
+				</tr>
+				<tr>
+					<th>Municipio de Manta</th>
+					<th>Mantenimiento</th>
+					<th>Saber dar un buen mantenimiento</th>
+				</tr>
+				<tr>
+					<th>Municipio de Manta</th>
+					<th>Ingeniero en Software</th>
+					<th>Saber crear software</th>
+				</tr>
+				<tr>
+					<th>Complejo Isabelle</th>
+					<th>Progamador</th>
+					<th>Saber programar</th>
+				</tr>
+				<tr>
+					<th>Complejo Isabelle</th>
+					<th>Mantenimiento</th>
+					<th>Saber dar un buen mantenimiento</th>
+				</tr>
+				<tr>
+					<th>Complejo Isabelle</th>
+					<th>Ingeniero en Software</th>
+					<th>Saber crear software</th>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<script>
+		// Obtener el formulario de búsqueda y el botón de búsqueda
+const searchForm = document.getElementById('searchForm');
+const searchButton = document.querySelector('#searchForm button');
+
+// Agregar un controlador de eventos al envío del formulario de búsqueda
+searchForm.addEventListener('submit', function(event) {
+	event.preventDefault(); // Evitar el envío del formulario por defecto
+
+	// Realizar alguna acción con los datos del formulario de búsqueda
+	// Ejemplo: redirigir a la página de oportunidades de prácticas
+	redirectToPracticaPage();
+});
+
+function redirectToPracticaPage() {
+	window.location.href = 'seguimiento estudiantil/seguimiento.html';
+}
+</script>
+</body>
+</html>

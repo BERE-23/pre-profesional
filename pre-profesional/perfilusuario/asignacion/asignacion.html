@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Asignación de Tutores y Supervisores</title>
+    <style>
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"], select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Asignación de Tutores y Supervisores</h2>
+        
+        <label for="nombre">Nombre del estudiante:</label>
+        <input type="text" id="nombre" placeholder="Ingrese el nombre del estudiante">
+
+        <label for="areaEstudio">Área de estudio:</label>
+        <input type="text" id="areaEstudio" placeholder="Ingrese el área de estudio">
+
+        <label for="practicaSeleccionada">Práctica seleccionada:</label>
+        <select id="practicaSeleccionada" name="practicaSeleccionada">
+            <option value="Sistema Operativo">Sistema Operativo</option>
+            <option value="Desarrollo de Software">Desarrollo de Software</option>
+            <option value="Programacion">Programacion</option>
+            <option value="Mantenimiento">Mantenimiento</option>
+            <option value="Analisis de Base de Dato">Analisis de Base de Dato</option>
+        </select>
+
+        <label for="tutorAcademico">Tutor académico asignado:</label>
+        <select id="tutorAcademico" name="tutorAcademico">
+            <option value="Ing. Patricia Quiroz">Ing. Patricia Quiroz</option>
+            <option value="Ing. Maike Machuca">Ing. Maike Machuca</option>
+            <option value="Ing. Adriana Macia">Ing. Adriana Macia</option>
+            <option value="Ing. Elsa Burgo">Ing. Elsa Burgo</option>
+            <option value="Ing. Luigi Pihuave">Ing. Luigi Pihuave</option>
+        </select>
+
+        <label for="supervisor">Supervisor asignado:</label>
+        <input type="text" id="supervisor" placeholder="Ingrese el nombre del supervisor">
+
+        <button id="assignButton" type="button">Asignar</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var assignButton = document.getElementById('assignButton');
+
+            assignButton.addEventListener('click', function() {
+                asignarTutorSupervisor();
+                redirectToPracticaPage();
+            });
+        });
+
+        function asignarTutorSupervisor() {
+            var nombreEstudiante = document.getElementById('nombre').value;
+            var areaEstudio = document.getElementById('areaEstudio').value;
+            var practicaSeleccionada = document.getElementById('practicaSeleccionada').value;
+            var tutorAcademico = document.getElementById('tutorAcademico').value;
+            var supervisor = document.getElementById('supervisor').value;
+
+            // Lógica para asignar el tutor académico y supervisor
+            // ...
+
+            // Mostrar los resultados en los campos de texto
+            document.getElementById('tutorAcademico').value = tutorAcademico;
+            document.getElementById('supervisor').value = supervisor;
+        }
+
+        function redirectToPracticaPage() {
+            window.location.href = 'Practica/practica.html';
+        }
+    </script>
+</body>
+</html>

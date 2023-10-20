@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Interfaz de Administración</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+  <h1>Interfaz de Administración</h1>
+
+  <div id="tutores-container">
+    <h2>Tutores Académicos</h2>
+    <ul id="tutores-list"></ul>
+  </div>
+
+  <div id="form-container">
+    <h2>Agregar Tutor Académico</h2>
+    <form id="tutor-form">
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" required>
+      
+      <label for="especializacion">Especialización:</label>
+      <input type="text" id="especializacion" required>
+
+      <button type="submit">Agregar Tutor</button>
+    </form>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Retroalimentación y Calificación de Tutores</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Retroalimentación y Calificación de Tutores</h1>
+  </header>
+
+  <main>
+    <h2>Tutor: Nombre del Tutor</h2>
+    
+    <section id="feedback-section">
+      <h3>Proporciona tu retroalimentación</h3>
+      <form id="feedback-form">
+        <label for="comentarios">Comentarios:</label>
+        <textarea id="comentarios" required></textarea>
+        
+        <label for="calificacion">Calificación (del 1 al 5):</label>
+        <input type="number" id="calificacion" min="1" max="5" required>
+    
+        <button type="submit">Enviar Retroalimentación</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

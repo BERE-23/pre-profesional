@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Menu Desplegable</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			display: flex;
+			min-height: 100vh;
+			background: url('UNI.png');
+			background-size: cover;
+		}
+
+		#header {
+			margin: auto;
+			width: 500px;
+			font-family: Arial, Helvetica, sans-serif;
+		}
+
+		ul,
+		ol {
+			list-style: none;
+		}
+
+		.nav>li {
+			float: left;
+			position: relative;
+		}
+
+		.nav li a {
+			background-color: #ed3434;
+			color: #fff;
+			text-decoration: aqua;
+			padding: 10px 12px;
+			display: block;
+		}
+
+		.nav li a:hover {
+			background-color: #434343;
+		}
+
+		.nav li ul {
+			display: none;
+			position: absolute;
+			top: 100%;
+			left: 0;
+			min-width: 140px;
+		}
+
+		.nav li:hover>ul {
+			display: block;
+		}
+
+		.nav li ul li {
+			position: relative;
+		}
+
+		.nav li ul li ul {
+			right: -140px;
+			top: 0;
+		}
+	</style>
+</head>
+<body>
+	<div id="header">
+		<ul class="nav">
+			<li><a href="perfilusuario/perfil.html">Perfil</a></li>
+			<li><a href="perfilusuario/asignacion/asignacion.html">Estudiante</a>
+				<ul>
+					<li><a href="documentacion/docu.html">Tarea</a>
+					<li><a href="programacion/progra.html">Dia elaborado</a>
+					<li><a href="programacion/notificacion/notifica.html">Correo</a>
+					<li><a href="evaluacion/evalu.html">Evaluacion</a>
+					</li>
+				</ul>
+			</li>
+			<li><a href="perfilusuario/perfil.html">Tutores</a>
+				<ul>
+					<li><a href="Calificaciones/cali.html">Calificaciones</a></li>
+					<li><a href="estadistica/esta.html">Estadistica</a></li>
+					<li><a href="programacion/notificacion/notifica.html">Correo</a>
+				</ul>
+			</li>
+			<li><a href="perfilusuario/perfil.html">Supervisor</a>
+				<ul>
+					<li><a href="perfilusuario/tutores/tuto.html">Administracion</a></li>
+					<li><a href="retro/retro.html">Calificaciones</a></li>
+					<li><a href="estadistica/esta.html">Estadistica</a></li>
+					<li><a href="programacion/notificacion/notifica.html">Correo</a>
+				</ul>
+			</li>	
+			<li><a href="cerrarsesion/cerrar.html">Cerrar Sesion</a></li>
+
+	</div>
+</body>
+</html>

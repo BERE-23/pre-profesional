@@ -1,0 +1,41 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+#tutores-container {
+    margin-top: 30px;
+}
+
+#tutores-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+#tutores-list li {
+    margin-bottom: 10px;
+}
+
+#form-container {
+    margin-top: 30px;
+}
+
+#tutor-form label {
+    display: block;
+    margin-top: 10px;
+}
+
+#tutor-form input {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+}
+
+#tutor-form button {
+    margin-top: 10px;
+    padding: 5px 10px;
+}

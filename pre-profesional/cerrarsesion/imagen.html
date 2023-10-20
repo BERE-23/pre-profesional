@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Página de imagen</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .image-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: black;
+      z-index: -1;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .message {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="image-container">
+    <img src="fin.jpg" alt="Imagen">
+  </div>
+
+  <div class="message">
+    Gracias por visitarnos estamos para ayudarte
+    dentro de tu practica pre-profesionales de la ULEAM
+    .
+  </div>
+</body>
+</html>

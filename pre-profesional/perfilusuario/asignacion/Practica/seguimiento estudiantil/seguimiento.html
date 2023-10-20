@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Registro y Seguimiento de Estudiantes</title>
+	<style type="text/css">
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+		}
+
+		.container {
+			max-width: 800px;
+			margin: 0 auto;
+			padding: 20px;
+		}
+
+		.form-header {
+			text-align: center;
+			margin-bottom: 20px;
+		}
+
+		.form-header h1 {
+			margin-top: 0;
+		}
+
+		form {
+			max-width: 500px;
+			margin: 0 auto;
+			background-color: #f5f5f5;
+			padding: 20px;
+			border-radius: 5px;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		}
+
+		label,
+		input {
+			display: block;
+			margin-bottom: 10px;
+		}
+
+		button {
+			margin-top: 10px;
+			padding: 10px 20px;
+			background-color: #0a5e78;
+			color: #fff;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+		}
+
+		button:hover {
+			background-color: #4d3785;
+		}
+
+		.activities-table {
+			width: 100%;
+			border-collapse: collapse;
+			margin-top: 20px;
+		}
+
+		.activities-table th,
+		.activities-table td {
+			padding: 8px;
+			border-bottom: 1px solid #ddd;
+		}
+
+		.activities-table th {
+			background-color: #f2f2f2;
+			text-align: left;
+		}
+</style>
+</head>
+<body>
+	<div class="container">
+		<div class="form-header">
+			<h1>Registro y Seguimiento de Estudiantes</h1>
+		</div>
+
+		<form id="studentForm">
+			<label for="name">Nombre:</label>
+			<input type="text" id="name" name="name" required>
+
+			<label for="areaEstudio">Área de Estudio:</label>
+			<input type="text" id="areaEstudio" name="areaEstudio" required>
+
+			<label for="especializacion">Especialización:</label>
+			<input type="text" id="especializacion" name="especializacion" required>
+		</form>
+
+		<h2>Registro de Horas y Actividades</h2>
+
+		<form id="activitiesForm">
+			<label for="date">Fecha:</label>
+			<input type="date" id="date" name="date" required>
+
+			<label for="hours">Horas:</label>
+			<input type="number" id="hours" name="hours" required>
+
+			<label for="activity">Actividad:</label>
+			<textarea id="activity" name="activity" required></textarea>
+			<button type="submit">Enviar todo</button>
+		</form>
+
+		<table class="activities-table">
+			<thead>
+				<tr>
+					<th>Fecha</th>
+					<th>Horas</th>
+					<th>Actividad</th>
+				</tr>
+			</thead>
+			<tbody id="activitiesTableBody">
+				<!-- Filas de datos omitidas por brevedad -->
+			</tbody>
+		</table>
+
+		<p id="message"></p>
+	</div>
+
+	<script>
+		// Obtener el formulario de registro de actividades y la tabla de actividades
+		const activitiesForm = document.getElementById('activitiesForm');
+		const activitiesTableBody = document.getElementById('activitiesTableBody');
+
+		// Agregar un controlador de eventos al envío del formulario de actividades
+		activitiesForm.addEventListener('submit', function(event) {
+			event.preventDefault(); // Evitar el envío del formulario por defecto
+
+			// Obtener los valores de los campos del formulario
+			const date = document.getElementById('date').value;
+			const hours = document.getElementById('hours').value;
+			const activity = document.getElementById('activity').value;
+
+			// Verificar si todos los campos están completos
+			if (date && hours && activity) {
+				// Crear una nueva fila en la tabla con los datos de la actividad registrada
+				const newRow = document.createElement('tr');
+				newRow.innerHTML = `
+					<td>${date}</td>
+					<td>${hours}</td>
+					<td>${activity}</td>
+				`;
+				activitiesTableBody.appendChild(newRow);
+
+				// Limpiar el formulario después del registro
+				activitiesForm.reset();
+
+				// Mostrar el mensaje de éxito con el botón "Acceder"
+				const message = document.getElementById('message');
+				message.innerHTML = 'Datos enviados correctamente<br><button onclick="acceder()">Acceder</button>';
+
+				// Redirigir a la página de documentacion después de 2 segundos
+				setTimeout(function() {
+					window.location.href = "pre-profesional/menu.html";
+				}, 2000);
+			} else {
+				// Mostrar un mensaje de error si algún campo está incompleto
+				const message = document.getElementById('message');
+				message.textContent = 'Por favor, completa todos los campos';
+			}
+		});
+	</script>
+</body>
+</html>
+

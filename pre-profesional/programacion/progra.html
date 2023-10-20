@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calendario de Prácticas</title>
+  <style>
+    .calendar {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .calendar-header {
+      background-color: #f2f2f2;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .calendar-header h2 {
+      margin: 0;
+    }
+
+    .calendar-body {
+      padding: 10px;
+      background-color: #fff;
+    }
+
+    .calendar-day {
+      text-align: center;
+      padding: 10px;
+      border: 1px solid #ddd;
+    }
+
+    .calendar-day:hover {
+      background-color: #f9f9f9;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="calendar">
+    <div class="calendar-header">
+      <h2>Calendario de Prácticas</h2>
+    </div>
+    <div class="calendar-body" id="calendar-body">
+      <!-- Aquí se generará el calendario dinámicamente -->
+    </div>
+  </div>
+
+  <script type="module">
+    // Obtener el elemento del cuerpo del calendario
+    var calendarBody = document.getElementById("calendar-body");
+
+    // Obtener la fecha actual
+    var currentDate = new Date();
+
+    // Obtener el número de días en el mes actual
+    var daysInMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate();
+
+    // Generar el calendario
+    for (var day = 1; day <= daysInMonth; day++) {
+      var calendarDay = document.createElement("div");
+      calendarDay.className = "calendar-day";
+      calendarDay.textContent = day;
+      
+      // Agregar un evento al hacer clic en un día
+      calendarDay.addEventListener("click", function() {
+        var selectedDay = this.textContent;
+        alert("Has seleccionado el día " + selectedDay);
+        window.location.href = "notificacion/notifica.html"; // Redireccionar al usuario a menu.html
+      });
+
+      calendarBody.appendChild(calendarDay);
+    }
+  </script>
+</body>
+</html>
+    
+    

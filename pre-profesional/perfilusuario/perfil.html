@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registro de Perfil de Usuario</title>
+    <style type="text/css">
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+			background-image: url('manta.jpg');
+			height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 1 auto;
+            padding: 20px;
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-header h1 {
+            margin-top: 0;
+        }
+
+        .form-cover {
+            background-size: cover;
+            background-position: none;
+            height: 300px;
+            margin-bottom: 20px;
+        }
+
+        form {
+            max-width: 300px;
+            margin: 0 auto;
+            background-color: #4b828c;
+            padding: 20px;
+            border-radius: 2%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        label,
+        input {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #8620a5;
+            color: #1e1111;
+            border: rgb(82, 17, 60);
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #7244b6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-header">
+            <h1>Registro de Perfil de Usuario</h1>
+        </div>
+
+        <div class="form-cover"></div>
+
+        <form>
+            <label for="role">Rol:</label>
+            <select id="role" name="role">
+                <option value="student">Estudiante</option>
+                <option value="academic_tutor">Tutor Académico</option>
+                <option value="supervisor">Supervisor</option>
+            </select>
+
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" name="name" required>
+
+            <!-- Campos adicionales para cada tipo de perfil -->
+            <div id="studentFields">
+                <label for="major">Carrera:</label>
+                <input type="text" id="major" name="major" required>
+            </div>
+
+            <div id="supervisorFields">
+                <label for="organization">Organización:</label>
+                <input type="text" id="organization" name="organization" required>
+
+                <label for="position">Cargo:</label>
+                <input type="text" id="position" name="position" required>
+            </div>
+
+            <button type="submit" id="register-button">Registrar</button>
+        </form>
+    </div>
+
+    <script type="text/javascript"></script>
+	<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const roleSelect = document.getElementById('role');
+        const studentFields = document.getElementById('studentFields');
+        const academicTutorFields = document.getElementById('academicTutorFields');
+        const supervisorFields = document.getElementById('supervisorFields');
+        const registerButton = document.getElementById('register-button');
+
+        roleSelect.addEventListener('change', function() {
+            const selectedRole = roleSelect.value;
+
+            if (selectedRole === 'student') {
+                studentFields.style.display = 'block';
+                academicTutorFields.style.display = 'none';
+                supervisorFields.style.display = 'none';
+            } else if (selectedRole === 'academic_tutor') {
+                studentFields.style.display = 'none';
+                academicTutorFields.style.display = 'block';
+                supervisorFields.style.display = 'none';
+            } else if (selectedRole === 'supervisor') {
+                studentFields.style.display = 'none';
+                academicTutorFields.style.display = 'none';
+                supervisorFields.style.display = 'block';
+            }
+        });
+
+        registerButton.addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            const selectedRole = roleSelect.value;
+
+            if (selectedRole === 'student') {
+                window.location.href = 'asignacion/asignacion.html';
+            } else if (selectedRole === 'academic_tutor') {
+                window.location.href = 'tutores/tuto.html';
+            } else if (selectedRole === 'supervisor') {
+                window.location.href = 'otra/ruta.html';
+            }
+        });
+    });
+</script>
+	</body>
+</html>

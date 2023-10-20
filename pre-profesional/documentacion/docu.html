@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Plataforma de Documentación</title>
+    <style>
+        /* Estilos CSS para la interfaz de usuario */
+        /* Puedes personalizar estos estilos según tus preferencias */
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .file-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .file-item {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .file-item .file-name {
+            font-weight: bold;
+        }
+
+        .loader {
+            border: 16px solid #f3f3f3; /* Light gray */
+            border-top: 16px solid #3498db; /* Blue */
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            animation: spin 2s linear infinite;
+            margin: 0 auto;
+            margin-bottom: 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Plataforma de Documentación</h2>
+
+        <h3>Cargar Documento</h3>
+        <form id="file-upload-form">
+            <input type="file" id="file-input" required><br><br>
+            <button type="submit" id="upload-button">Cargar</button>
+        </form>
+
+        <div id="loader" class="loader" style="display: none;"></div>
+
+        <button onclick="enviarTarea()" id="send-button" style="display: none;">Enviar Tarea</button>
+    </div>
+
+    <script>
+        // Variable para almacenar el estado de carga
+        var isLoading = false;
+
+        // Función para manejar el evento de carga de archivos
+        function handleFileUpload(event) {
+            event.preventDefault();
+
+            var fileInput = document.getElementById("file-input");
+            var file = fileInput.files[0];
+
+            if (file && !isLoading) {
+                // Mostrar el loader
+                var loader = document.getElementById("loader");
+                loader.style.display = "block";
+
+                // Simular una carga de 2 segundos antes de mostrar el botón "Enviar"
+                isLoading = true;
+                setTimeout(function() {
+                    // Ocultar el loader
+                    loader.style.display = "none";
+
+                    // Mostrar el botón "Enviar"
+                    var sendButton = document.getElementById("send-button");
+                    sendButton.style.display = "block";
+
+                    // Restablecer el estado de carga
+                    isLoading = false;
+
+                    // Limpiar el campo de entrada de archivos después de cargar
+                    fileInput.value = "";
+                }, 2000);
+            }
+        }
+
+        // Event listener para el evento de carga de archivos
+        var fileUploadForm = document.getElementById("file-upload-form");
+        fileUploadForm.addEventListener("submit", handleFileUpload);
+
+        // Función para enviar la tarea
+        function enviarTarea() {
+            if (!isLoading) {
+                // Aquí puedes agregar la lógica para enviar la tarea al backend
+
+                // Mostrar un mensaje de éxito
+                alert("Tarea enviada con éxito");
+
+                // Redirigir a la página de menú
+                window.location.href = "pre-profesional/menu.html";
+            }
+        }
+    </script>
+</body>
+</html>

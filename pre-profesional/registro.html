@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <title>Gestion de Practica Pre-profesionales ULEAM</title>
+</head>
+
+<body>
+    <div class="container-form sign-up">
+        <div class="welcome-back">
+            <div class="message">
+                <h2>Bienvenido a tu práctica pre-profesionales Uleam</h2>
+                <p>Si ya tienes una cuenta por favor inicia sesión aquí</p>
+                <button class="sign-in-btn">Iniciar Sesión</button>
+            </div>
+        </div>
+        <form class="formulario">
+            <h2 class="create-account">Crear una cuenta</h2>
+            <div class="iconos">
+                <div class="border-icon">
+                    <i class='bx bxl-instagram'></i>
+                </div>
+                <div class="border-icon">
+                    <i class='bx bxl-linkedin'></i>
+                </div>
+                <div class="border-icon">
+                    <i class='bx bxl-facebook-circle'></i>
+                </div>
+            </div>
+            <p class="cuenta-gratis">Crear una cuenta gratis</p>
+            <input type="text" id="registerUsername" placeholder="Nombre">
+            <input type="email" id="registerEmail" placeholder="Email">
+            <input type="password" id="registerPassword" placeholder="Contraseña">
+            <button onclick="Crearunacuenta()">Registrarse</button>
+        </form>
+    </div>
+    <div class="container-form sign-in">
+        <form class="formulario">
+            <h2 class="create-account">Iniciar Sesión</h2>
+            <div class="iconos">
+                <div class="border-icon">
+                    <i class='bx bxl-instagram'></i>
+                </div>
+                <div class="border-icon">
+                    <i class='bx bxl-linkedin'></i>
+                </div>
+                <div class="border-icon">
+                    <i class='bx bxl-facebook-circle'></i>
+                </div>
+            </div>
+            <p class="cuenta-gratis">¿Aún no tienes una cuenta?</p>
+            <input type="email" id="username" placeholder="Email">
+            <input type="password" id="password" placeholder="Contraseña">
+            <button id="login-button">Acceder</button>
+        </form>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const $btnSignIn = document.querySelector(".sign-in-btn"),
+                $btnSignUp = document.querySelector(".sign-up-btn"),
+                $signUp = document.querySelector(".sign-up"),
+                $signIn = document.querySelector(".sign-in");
+
+            // Cambiar entre el formulario de inicio de sesión y el de registro
+            document.addEventListener("click", (e) => {
+                if (e.target === $btnSignIn || e.target === $btnSignUp) {
+                    $signIn.classList.toggle("active");
+                    $signUp.classList.toggle("active");
+                }
+            });
+        });
+            // Función para crear una cuenta
+            function Crearunacuenta() {
+                let Nombre = document.getElementById("registerUsername").value;
+                let Email = document.getElementById("registerEmail").value;
+                let Contraseña = document.getElementById("registerPassword").value;
+                localStorage.setItem(Email, JSON.stringify({ Nombre, Contraseña }));
+                alert("Registro exitoso.");
+
+                // Redirige al formulario de inicio de sesión
+                $btnSignIn.click();
+            }
+
+              // Inicio de sesión
+        const loginButton = document.getElementById("login-button");
+        loginButton.addEventListener("click", function (event) {
+            event.preventDefault(); // Evita el envío del formulario por defecto
+
+            // Obtenemos los valores de los campos de entrada
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            // Realizamos una validación simple (puedes personalizarla según tus necesidades)
+            if (username === "" || password === "") {
+                alert("Por favor, complete todos los campos.");
+            } else {
+                // Verificamos el inicio de sesión (puedes agregar lógica de autenticación aquí)
+                alert("Inicio de sesión exitoso.");
+                window.location.href = "menu.html"; // Redirige a la página principal
+            }
+        });
+</script>
+</body>
+</html>
